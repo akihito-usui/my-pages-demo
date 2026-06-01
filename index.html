@@ -39,12 +39,31 @@
 
     header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
       border-bottom:1px solid #eaecef}
-    .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav .wrap{position:relative;display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{font-weight:800;font-size:1.15rem;letter-spacing:.02em}
     .brand b{color:var(--accent)}
     .nav nav a{margin-left:22px;text-decoration:none;color:var(--ink);font-size:.92rem;font-weight:600}
     .nav nav a:hover{color:var(--accent)}
-    @media(max-width:640px){.nav nav{display:none}}
+    /* ハンバーガー：チェックボックス方式でJS不要。PCでは非表示 */
+    .nav-toggle{display:none}
+    .burger{display:none;cursor:pointer;width:30px;height:22px;position:relative;flex:0 0 auto}
+    .burger span{position:absolute;left:0;width:100%;height:3px;background:var(--ink);border-radius:2px;transition:.25s}
+    .burger span:nth-child(1){top:0}
+    .burger span:nth-child(2){top:9.5px}
+    .burger span:nth-child(3){top:19px}
+    @media(max-width:640px){
+      .burger{display:block}
+      .nav nav{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;
+        background:#fff;border-bottom:1px solid #eaecef;box-shadow:0 10px 24px rgba(0,0,0,.10);
+        padding:6px 20px;max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+        transition:max-height .3s ease,opacity .2s ease}
+      .nav nav a{margin:0;padding:13px 2px;border-bottom:1px solid #f1f2f4}
+      .nav nav a:last-child{border-bottom:none}
+      .nav-toggle:checked ~ nav{max-height:360px;opacity:1;visibility:visible}
+      .nav-toggle:checked ~ .burger span:nth-child(1){top:9.5px;transform:rotate(45deg)}
+      .nav-toggle:checked ~ .burger span:nth-child(2){opacity:0}
+      .nav-toggle:checked ~ .burger span:nth-child(3){top:9.5px;transform:rotate(-45deg)}
+    }
 
     /* ヒーロー：共有ホストの hero.jpg の上に暗い帯を重ねて文字を読みやすく */
     .hero{position:relative;color:#fff;text-align:center;padding:130px 20px 150px;
@@ -95,6 +114,11 @@
   <header class="nav">
     <div class="wrap">
       <div class="brand"><b>大丸開発</b></div>
+      <!-- チェックボックスでメニュー開閉。label(.burger)が同じ id を切り替える -->
+      <input type="checkbox" id="navToggle" class="nav-toggle" />
+      <label class="burger" for="navToggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </label>
       <nav>
         <a href="#works">分譲・物件</a>
         <a href="#event">イベント</a>

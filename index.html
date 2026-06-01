@@ -72,7 +72,7 @@
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     @media(max-width:860px){.cards{grid-template-columns:1fr}}
     .card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.07);
-      transition:transform .18s,box-shadow .18s}
+      transition:transform .18s,box-shadow .18s;text-decoration:none;color:inherit;display:block}
     .card:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(0,0,0,.13)}
     /* 写真が無くても崩れないようグラデーション背景を敷き、その上に画像を載せる */
     .card img.ph{width:100%;height:190px;object-fit:cover;display:block;
@@ -149,9 +149,9 @@
     <div class="wrap">
       <div class="sec-ttl"><span>COLUMN</span><h2>家づくりコラム</h2></div>
       <div class="cards">
-        <div class="card"><img class="ph" src="https://daimaru-d.github.io/pages-demo-assets/images/column.jpg" alt="コラム"><div class="body"><h3>賃貸と持ち家どっちがお得？</h3><div class="meta">メリット・デメリットを解説</div></div></div>
-        <div class="card"><img class="ph" src="https://daimaru-d.github.io/pages-demo-assets/images/event.jpg" alt="コラム"><div class="body"><h3>戸建てとマンションの選び方</h3><div class="meta">判断基準を整理</div></div></div>
-        <div class="card"><img class="ph" src="https://daimaru-d.github.io/pages-demo-assets/images/hero.jpg" alt="コラム"><div class="body"><h3>2026年 岐阜県 地価ランキング</h3><div class="meta">公示地価の推移も紹介</div></div></div>
+        <a class="card" href="columns/rent-vs-own.html"><img class="ph" src="https://daimaru-d.github.io/pages-demo-assets/images/column.jpg" alt="コラム"><div class="body"><h3>賃貸と持ち家どっちがお得？</h3><div class="meta">メリット・デメリットを解説</div></div></a>
+        <a class="card" href="columns/house-vs-mansion.html"><img class="ph" src="https://daimaru-d.github.io/pages-demo-assets/images/event.jpg" alt="コラム"><div class="body"><h3>戸建てとマンションの選び方</h3><div class="meta">判断基準を整理</div></div></a>
+        <a class="card" href="columns/gifu-land-price.html"><img class="ph" src="https://daimaru-d.github.io/pages-demo-assets/images/hero.jpg" alt="コラム"><div class="body"><h3>2026年 岐阜県 地価ランキング</h3><div class="meta">公示地価の推移も紹介</div></div></a>
       </div>
     </div>
   </section>
